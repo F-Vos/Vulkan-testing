@@ -1,7 +1,8 @@
 #pragma once
 
 #include "lve_window.hpp"
-#include "lve_pipeline.hpp"
+#include "lve_Pipeline.hpp"
+#include "lve_device.hpp"
 
 namespace lve {
 	class FirstApp {
@@ -13,6 +14,7 @@ namespace lve {
 		void run();
 	private:
 		LveWindow lveWindow{ WIDTH, HEIGHT, "Hello Vulkan" };
-		LvePipeline LvePipeLine{ "shaders/vert.spv", "shaders/frag.spv" };
+		LveDevice lveDevice{ lveWindow };
+		LvePipeline LvePipeline{lveDevice, "shaders/vert.spv", "shaders/frag.spv", LvePipeline::defaultPipelineConfigInfo(WIDTH, HEIGHT)};
 	};
 }
